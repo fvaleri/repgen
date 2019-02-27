@@ -1,0 +1,65 @@
+{
+    "name": "12345678",
+    "model": {
+        "name": "simple-letter"
+    },
+    "dataset": [
+        {
+            "refId": "page1",
+            "texts": [
+                {
+                    "name": "sender1",
+                    "value": "TEST SRL"
+                },
+                {
+                    "name": "sender2",
+                    "value": "Via del Corso 10 00187"
+                },
+                {
+                    "name": "sender3",
+                    "value": "Ufficio Personale"
+                },
+                {
+                    "name": "sender4",
+                    "value": "Casella Postale 123 - Roma"
+                },
+                {
+                    "name": "receiver1",
+                    "value": "MARIO ROSSI"
+                },
+                {
+                    "name": "receiver2",
+                    "value": "SC.A INT.2"
+                },
+                {
+                    "name": "receiver3",
+                    "value": "VIA CRISTOFORO COLOMBO 123"
+                },
+                {
+                    "name": "receiver4",
+                    "value": "00154 ROMA RM"
+                },
+                {
+                    "name": "receiver5",
+                    "value": null
+                },
+                {
+                    "name": "protocol",
+                    "value": "Prot. n. 1234 del 10/10/2016"
+                },
+                {
+                    "name": "object",
+                    "value": "Lorem ipsum dolor sit amet"
+                },
+                {
+                    "name": "text",
+                    "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                },
+                {
+                    "name": "signature",
+                    "value": "Lorem ipsum"
+                }
+            ]
+        }
+    ]
+}
