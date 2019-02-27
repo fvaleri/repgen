@@ -1,0 +1,55 @@
+def MAVEN_PARAMS = "-U -B -e -fae -V -Dmaven.compiler.fork=true"
+
+pipeline {
+
+    agent {
+        docker {
+            image 'maven:3.6.3-openjdk-8'
+        }
+    }
+
+    environment {
+        MAVEN_SKIP_RC = true
+    }
+
+    options {
+        buildDiscarder(
+            logRotator(artifactNumToKeepStr: '5', numToKeepStr: '10')
+        )
+        disableConcurrentBuilds()
+    }
+
+    parameters {
+        booleanParam(name: 'CLEAN', defaultValue: true, description: 'Clean Git repository')
+    }
+
+    stages {
+        stage('Clean Git repository') {
+             when {
+                expression {
+                    params.CLEAN
+                }
+             }
+             steps {
+                 sh 'git clean -fdx'
+           }
+        }
+        stage('Build Maven project') {
+            steps {
+                sh 'mvn $MAVEN_PARAMS clean package -DskipTests'
+            }
+        }
+        stage('Test Maven project') {
+            steps {
+                sh "mvn $MAVEN_PARAMS clean test"
+            }
+            post {
+                always {
+                    junit allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'
+                    junit allowEmptyResults: true, testResults: '**/target/failsafe-reports/*.xml'
+                }
+            }
+        }
+    }
+
+}
