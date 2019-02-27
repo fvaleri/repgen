@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2018 Federico Valeri.
+Licensed under the Apache License 2.0 (see LICENSE file).
+-->
+<fontFamilies>
+	<fontFamily name="Arial">
+		<normal><![CDATA[fonts/arial.ttf]]></normal>
+		<bold><![CDATA[fonts/arialbd.ttf]]></bold>
+		<italic><![CDATA[fonts/ariali.ttf]]></italic>
+		<bolditalic><![CDATA[fonts/arialbi.ttf]]></bolditalic>
+		<pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+		<exportFonts/>
+    </fontFamily>
+    <fontFamily name="OCRB">
+		<normal><![CDATA[fonts/ocrb.ttf]]></normal>
+		<pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+		<exportFonts/>
+	</fontFamily>
+</fontFamilies>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2018 Federico Valeri.
+Licensed under the Apache License 2.0 (see LICENSE file).
+-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="simple-letter" pageWidth="595" pageHeight="842" columnWidth="539" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="28" uuid="3513ed72-11c6-44a3-b5c4-f01599353ca9">
+	<property name="ireport.zoom" value="1.6105100000000068"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1008"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="base" isDefault="true" fontName="Arial" isBold="false"/>
+	<style name="bold" isBold="true" pdfFontName="fonts/arialbd.ttf"/>
+	<style name="ocrb" fontName="OCRB" fontSize="9" isBold="false" pdfFontName="fonts/ocrb.ttf"/>
+	<field name="data" class="it.fvaleri.repgen.domain.Data"/>
+	<pageHeader>
+		<band height="80" splitType="Prevent">
+			<image>
+				<reportElement x="2" y="0" width="213" height="32" uuid="543f3c68-d808-478a-a301-cd3b7dfc87e1"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+				<imageExpression><![CDATA["templates/images/logo.jpg"]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="2" y="32" width="255" height="10" isRemoveLineWhenBlank="true" uuid="28c83b97-d155-432c-99b5-850359510aee"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data}.getText("sender1")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="2" y="52" width="255" height="10" isRemoveLineWhenBlank="true" uuid="dde65e0c-739a-4d27-8fd4-4089c22ea934"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data}.getText("sender3")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="" style="bold" positionType="Float" x="2" y="62" width="255" height="10" isRemoveLineWhenBlank="true" uuid="40d2d81b-1344-4a25-adde-53e1f2b0217f"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data}.getText("sender4")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="2" y="42" width="255" height="10" isRemoveLineWhenBlank="true" uuid="a49b75c5-3510-4682-9c0e-7ed084a894b8"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data}.getText("sender2")]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="706" splitType="Prevent">
+			<textField isBlankWhenNull="true">
+				<reportElement style="bold" x="10" y="172" width="520" height="15" isRemoveLineWhenBlank="true" uuid="69f32131-7df4-4ce4-a16f-f39ba97038aa"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{data}.getText("protocol")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="bold" x="10" y="195" width="520" height="30" uuid="1a7058bd-0ac5-414f-a39b-d306f184c408"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{data}.getText("object")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="10" y="198" width="520" height="150" uuid="6ad6a028-6265-408d-9a69-e230e8c2d18e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="styled"/>
+				<textFieldExpression><![CDATA[$F{data}.getText("text")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="10" y="445" width="520" height="130" uuid="4a50e967-c62a-4c6e-a101-9812a6146b1b">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="styled"/>
+				<textFieldExpression><![CDATA["This is a static text.<br/><br/>The quick brown fox jumps over the lazy dog."]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="ocrb" x="269" y="67" width="261" height="14" uuid="db1c3e7c-de4e-480d-bb64-9a4983ab0813"/>
+				<textFieldExpression><![CDATA[$F{data}.getText("receiver1")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="ocrb" x="269" y="80" width="261" height="14" uuid="cd748322-42c0-4338-81d4-c5f1e7ca65d0"/>
+				<textFieldExpression><![CDATA[$F{data}.getText("receiver2")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="ocrb" x="269" y="93" width="261" height="14" uuid="0779f5c0-3286-4778-a2f7-411b264d56b5"/>
+				<textFieldExpression><![CDATA[$F{data}.getText("receiver3")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="ocrb" x="269" y="106" width="261" height="14" uuid="3f79eb54-82a8-428e-b776-90e7fc5ebad3"/>
+				<textFieldExpression><![CDATA[$F{data}.getText("receiver4")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="ocrb" x="269" y="119" width="261" height="14" uuid="fe8cb960-7db3-4b65-87a9-cef8653cca70"/>
+				<textFieldExpression><![CDATA[$F{data}.getText("receiver5")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="330" y="650" width="192" height="40" isRemoveLineWhenBlank="true" uuid="625d03a1-1312-4710-bd36-23a8d8776f75">
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled"/>
+				<textFieldExpression><![CDATA[$F{data}.getText("signature")]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
