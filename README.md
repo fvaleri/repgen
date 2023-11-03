@@ -15,15 +15,15 @@ Repgen is a general purpose report generation engine built on top of JasperRepor
 ## Build and run
 
 ```sh
-mvn clean package
+mvn package
 java -jar target/repgen-*.jar
 
 # run unit/integration tests
-mvn clean test
-mvn clean test -Dtest=*IT
+mvn test
+mvn test -Dtest=*IT
 
 # create binaries
-mvn clean package -Passembly
+mvn package -Passembly
 ```
 
 ## REST API
