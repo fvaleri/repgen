@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        java: [ '8' ]
+        java: [ '17' ]
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
@@ -27,11 +27,9 @@ jobs:
           cache: 'maven'
       - name: Run unit tests
         run: |
-          mvn -V -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false \
-          -Dmaven.wagon.httpconnectionManager.ttlSeconds=120 --no-transfer-progress \
-          clean test
+          mvn test -V -B -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false \
+          -Dmaven.wagon.httpconnectionManager.ttlSeconds=120 --no-transfer-progress
       - name: Run integration tests
         run: |
-          mvn -V -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false \
-          -Dmaven.wagon.httpconnectionManager.ttlSeconds=120 --no-transfer-progress \
-          clean test -Pint
+          mvn test -V -B -Pint -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false \
+          -Dmaven.wagon.httpconnectionManager.ttlSeconds=120 --no-transfer-progress
