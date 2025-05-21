@@ -1,7 +1,6 @@
 .settings/
 .idea/
 .vscode/
-build/
 target/
 .project
 .classpath
