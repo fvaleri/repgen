@@ -27,6 +27,7 @@ Licensed under the Apache License 2.0 (see LICENSE file).
         <json.version>20190722</json.version>
         <plugin.compiler.version>3.13.0</plugin.compiler.version>
         <plugin.surefire.version>3.0.0-M1</plugin.surefire.version>
+        <plugin.failsafe.version>3.0.0-M1</plugin.failsafe.version>
         <plugin.assembly.version>3.3.0</plugin.assembly.version>
         <spotbugs.version>4.5.3</spotbugs.version>
         <plugin.spotbugs.version>4.5.3.0</plugin.spotbugs.version>
@@ -153,9 +154,41 @@ Licensed under the Apache License 2.0 (see LICENSE file).
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${plugin.surefire.version}</version>
                 <configuration>
+                    <parallel>methods</parallel>
+                    <threadCount>4</threadCount>
+                    <forkCount>1C</forkCount>
+                    <reuseForks>true</reuseForks>
+                    <excludes>
+                        <exclude>**/*IT.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${plugin.failsafe.version}</version>
+                <configuration>
                     <forkCount>1</forkCount>
                     <reuseForks>false</reuseForks>
+                    <includes>
+                        <include>**/*IT.java</include>
+                    </includes>
+                    <argLine>--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED</argLine>
+                    <classpathDependencyExcludes>
+                        <classpathDependencyExclude>org.springframework.boot:spring-boot-starter-tomcat</classpathDependencyExclude>
+                    </classpathDependencyExcludes>
+                    <additionalClasspathElements>
+                        <additionalClasspathElement>${project.build.outputDirectory}</additionalClasspathElement>
+                    </additionalClasspathElements>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

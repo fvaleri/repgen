@@ -12,15 +12,15 @@ Repgen is a general purpose report generation engine built on top of JasperRepor
 - The engine supports embedded fonts (PDF/A spec) for optimal rendering on every system.
 - The REST API can be used to request new report builds, search and download generated reports.
 
-## Build and run
+## Build from source
 
 ```sh
+# build and run
 mvn package
 java -jar target/repgen-*.jar
 
-# run unit/integration tests
-mvn test
-mvn test -Dtest=*IT
+# run tests
+mvn verify
 
 # create binaries
 mvn package -Passembly
