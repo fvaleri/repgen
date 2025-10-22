@@ -27,9 +27,9 @@ jobs:
           cache: 'maven'
       - name: Run unit tests
         run: |
-          mvn test -V -B -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false \
+          mvn test -e -B -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false \
           -Dmaven.wagon.httpconnectionManager.ttlSeconds=120
       - name: Run integration tests
         run: |
-          mvn test -V -B -Pint -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false \
+          mvn test -e -B -Pint -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false \
           -Dmaven.wagon.httpconnectionManager.ttlSeconds=120
