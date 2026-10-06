@@ -15,53 +15,40 @@ Repgen is a general purpose report generation engine built on top of JasperRepor
 ## Build from source
 
 ```sh
-# build and run
+# Build and run
 mvn package
 java -jar target/repgen-*.jar
 
-# run tests
+# Run tests
 mvn verify
 
-# create binaries
+# Create binaries
 mvn package -Passembly
 ```
 
 ## REST API
 
-Health check:
-
 ```sh
+# Health check
 curl -s http://localhost:8080/repgen/api/health
-```
 
-Scheduler commands:
-
-```sh
+# Scheduler commands
 curl -s http://localhost:8080/repgen/api/scheduler
 curl -sX POST http://localhost:8080/repgen/api/scheduler/start
 curl -sX POST http://localhost:8080/repgen/api/scheduler/stop
-```
 
-Build request:
-
-```sh
+# Build request
 curl -sX POST -H "Content-Type: application/json" \
   -d @src/test/resources/simple-letter.json http://localhost:8080/repgen/api/reports
 curl -sX POST -H "Content-Type: application/json" \
   -d @src/test/resources/simple-table.json http://localhost:8080/repgen/api/reports
-```
 
-Retrieve reports:
-
-```sh
+# Retrieve reports
 curl -s http://localhost:8080/repgen/api/reports
 curl -s http://localhost:8080/repgen/api/reports/1
 curl -s http://localhost:8080/repgen/api/reports/1 | jq -r ".content" | base64 -d > test.pdf
-```
 
-Search reports:
-
-```sh
+# Search reports
 curl -sX POST -H "Content-Type: application/json" \
   -d '{"name":"80c9d32"}' http://localhost:8080/repgen/api/reports/search
 curl -sX POST -H "Content-Type: application/json" \
